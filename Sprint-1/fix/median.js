@@ -8,6 +8,12 @@
 function calculateMedian(list) {
   if (!Array.isArray(list)) return null; // this checks if "list" is an array if not return's null.
   
+// filter the non number values out of an array like "strings", "null's", "undefined"
+  const numbers = list.filter(value => typeof value === `number` && !isNaN(value));
+
+// if no numbers are left return null
+  if (numbers.length === 0) return null;
+
   const middleIndex = Math.floor(list.length / 2);
   const median = list.splice(middleIndex, 1)[0];
   return median;
