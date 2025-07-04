@@ -14,9 +14,22 @@ function calculateMedian(list) {
 // if no numbers are left return null
   if (numbers.length === 0) return null;
 
-  const middleIndex = Math.floor(list.length / 2);
-  const median = list.splice(middleIndex, 1)[0];
-  return median;
+// sort numbers into ascending order
+  numbers.sort(function(a, b){
+    return a - b;
+  });
+
+  // find the middle index based on filtered numbers length
+  const middleIndex = Math.floor(numbers.length / 2);
+
+  // return correct median based on odd or even count
+  if (numbers.length % 2 === 0) {
+    // even length average of two middle numbers
+    return (numbers[middleIndex - 1] + numbers[middleIndex]) / 2;
+  } else {
+    // odd length return the middle number
+    return numbers[middleIndex];
+  }
 }
 
 module.exports = calculateMedian;
